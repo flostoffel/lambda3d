@@ -153,11 +153,23 @@ class ContactCreateView(View):
                                             """ % (nombre, mensaje_a_usuario, settings.EMAIL_HOST_USER)
                 mail_a_usuario = EmailMessage(asunto_mail_usuario, contenido_mail_usuario, to=[email])
                 mail_a_usuario.content_subtype = "html" # para heredar atributos de formato HTML 
-                mail_a_usuario.send()
+                
+                # Si la cuenta de mail HOST se encuetra configurada...
+                try:
+                    mail_a_usuario.send()
+                    
+                # caso contrario, enviará el mensaje...    
+                except:
+                    msg_prof = '''
+                               Para enviar el mail, se debe configurar cuenta de mail HOST en "settings.py".
+                               Es decir, completar con datos de una cuenta válida:
+                               "EMAIL_HOST_USER = cuenta de mail válida."
+                               "EMAIL_HOST_PASSWORD = contraseña de la cuenta."
+                               '''
                 
                 c, created = Contacto.objects.get_or_create(nombre=nombre,email=email,telefono=telefono,asunto=asunto,mensaje=mensaje)
                 c.save()
-                msg = {'mensaje': f'Gracias "{nombre}". Hemos recibido tu mensaje!!'}
+                msg = {'mensaje': f'Gracias "{nombre}". Hemos recibido tu mensaje!!. No se pudo enviar el mail dado que {msg_prof}'}
                 return render(request,"resultado_contacto.html",msg)
 
         context = {
