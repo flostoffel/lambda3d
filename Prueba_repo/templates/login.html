@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+{% load crispy_forms_tags %}
+{% block loquecambia %}
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="col-4">
+        {{form|crispy}}
+        </div>
+    
+    <button type="submit" style="padding: 5px; margin-left: 0.8rem; border-radius: 5px;"> iniciar sesión</button> 
+    </form>
+    <br>
+    <br>
+    <div style="margin-left: 5px;">
+        <a href="{% url 'app:registro' %}" style="text-decoration: none; font-family: 'Hind Siliguri', sans-serif; color: #698901;"> No tienes cuenta? Registrate!</a>
+    </div>
+    <br>
+    
+</body>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "padre.html" %}
+{% block loquecambia %}
+    
+    <br>
+    <h2>¿Está seguro de que desea borrar el producto?</h2>
+    <br>
+    <form method="POST">
+        {%csrf_token%}
+        {{form}}
+        <button type="submit" style="padding: 2px;">borrar</button>
+    </form>
+    <br>
+{% endblock %}
+
