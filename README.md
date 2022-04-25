@@ -6,7 +6,7 @@ El proyecto consiste en la base de una **tienda online** de venta de productos e
 
 ---
 
-[![Alt text](https://img.youtube.com/vi/configuroweb/0.jpg)](https://www.youtube.com/embed/6qYGL0aBFus)
+[![video_ProyectoFinal](/static/images/Video_YouTube.png)](https://www.youtube.com/embed/6qYGL0aBFus)
 
 ---
 _Link de repositorio_:
